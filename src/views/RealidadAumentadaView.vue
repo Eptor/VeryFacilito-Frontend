@@ -1,7 +1,7 @@
 <template>
     <div>
         <a-scene embedded arjs>
-            <a-marker preset="hiro">
+            <a-marker type="pattern" url="/pattern-marker.patt" emitevents="true" @markerFound="onMarkerFound">
                 <!-- Add your augmented reality content here -->
                 <a-box position="0 0.5 0" material="color: yellow;"></a-box>
             </a-marker>
@@ -32,6 +32,9 @@ export default {
             } catch (error) {
                 console.error('Error accessing media devices.', error)
             }
+        },
+        onMarkerFound() {
+            console.log('Patrón detectado');
         }
     }
 }
