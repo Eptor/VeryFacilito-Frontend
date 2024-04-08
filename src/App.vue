@@ -1,30 +1,39 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <nav class="bg-indigo-600 p-4">
+    <div class="flex items-center justify-between">
+      <router-link class="text-white text-lg font-semibold" to="/">Inicio</router-link>
+      <div v-if="user">
+        <button @click="logout" class="text-white text-lg mx-2">Salir</button>
+      </div>
+      <div v-else>
+        <router-link class="text-white text-lg mx-2" to="/login">Entrar</router-link>
+        <router-link class="text-white text-lg mx-2" to="/register">Crear cuenta</router-link>
+      </div>
+    </div>
   </nav>
-  <router-view/>
+  <router-view />
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import { ref } from 'vue'
+import { supabase } from '@/utils/supabase'
 
-nav {
-  padding: 30px;
-}
+export default {
+  setup() {
+    const user = ref(null)
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+    supabase.auth.onAuthStateChange((event, session) => {
+      user.value = session?.user
+    })
 
-nav a.router-link-exact-active {
-  color: #42b983;
+    const logout = async () => {
+      await supabase.auth.signOut()
+    }
+
+    return {
+      user,
+      logout
+    }
+  }
 }
-</style>
+</script>
