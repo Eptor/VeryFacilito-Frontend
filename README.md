@@ -19,6 +19,11 @@ npm run build
 ```
 npm run lint
 ```
+### MAPS
+```
+npm install leaflet
+```
+
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

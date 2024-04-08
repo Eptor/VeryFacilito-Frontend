@@ -21,6 +21,11 @@ const routes = [
     path: '/realidad-aumentada',
     name: 'realidad-aumentada',
     component: () => import('../views/RealidadAumentadaView.vue')
+  },
+  {
+    path: '/mapa-interactivo',
+    name: 'mapa-interactivo',
+    component: () => import('../views/Mapa.vue')
   }
 ]
 
