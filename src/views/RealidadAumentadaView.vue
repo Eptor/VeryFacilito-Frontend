@@ -1,9 +1,8 @@
 <template>
     <div>
-        <a-scene embedded arjs>
-            <a-marker type="pattern" url="/pattern-marker.patt" emitevents="true" @markerFound="onMarkerFound">
-                <!-- Add your augmented reality content here -->
-                <a-box position="0 0.5 0" material="color: yellow;"></a-box>
+        <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+            <a-marker preset="hiro" @markerFound="onMarkerFound">
+                <a-box position="0 0.5 0" material="color: red;"></a-box>
             </a-marker>
             <a-entity camera></a-entity>
         </a-scene>
