@@ -25,7 +25,7 @@ const routes = [
   {
     path: '/mapa-interactivo',
     name: 'mapa-interactivo',
-    component: () => import('../views/Mapa.vue')
+    component: () => import('../views/MapaView.vue')
   }
 ]
 
