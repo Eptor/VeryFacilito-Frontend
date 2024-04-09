@@ -15,7 +15,7 @@ const routes = [
   {
     path: '/register',
     name: 'register',
-    
+    component: () => import('../views/RegisterView.vue')
   },
   {
     path: '/realidad-aumentada',
